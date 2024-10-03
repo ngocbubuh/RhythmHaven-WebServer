@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +8,6 @@ using RhythmHaven.API.Middlewares;
 using RhythmHaven.Repository.Entities;
 using RhythmHaven.Service.Settings;
 using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,10 @@ builder.Services.AddHttpContextAccessor();
 // Add AutomMapper
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddAutoMapper(typeof(AutoMapperSetting).Assembly);
+// Add VnPay
+builder.Services.Configure<VnPaySetting>(builder.Configuration.GetSection("Vnpay"));
+// Add Brute Force protection
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -84,7 +88,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<RhythmHavenContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LOCAL_CONNECTION_STRING"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_CONNECTION_STRING"));
 });
 
 var app = builder.Build();

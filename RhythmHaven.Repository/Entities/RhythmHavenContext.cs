@@ -45,14 +45,10 @@ public partial class RhythmHavenContext : DbContext
 
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cart__3214EC076C3A46F3");
-
             entity.ToTable("Cart");
-
+            entity.HasKey(p => new { p.AccountId, p.ProductId });
             entity.Property(e => e.Id);
-            entity.Property(e => e.AccountId).HasColumnName("AccountID");
             entity.Property(e => e.CreateDate).HasColumnType("datetime");
-            entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.UpdateDate).HasColumnType("datetime");
             entity.Property(e => e.Version)
                 .IsRowVersion()

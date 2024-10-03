@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/RhythmHaven-API/apis/RhythmHavenAPI",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/RhythmHavenAPI/providers/Microsoft.ServiceLinker/linkers/AZURE_CONNECTION_STRING_68BF509C86",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/rhythmhavenapidbserver/databases/RhythmHaven.API_db",
+      "type": "mssql.azure",
+      "connectionId": "AZURE_CONNECTION_STRING"
+    }
+  }
+}

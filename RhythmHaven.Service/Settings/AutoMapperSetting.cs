@@ -24,6 +24,8 @@ namespace RhythmHaven.Service.Settings
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => AccountStatus.ACTIVE.ToString()));
                 
             CreateMap<UserModel, Account>().ReverseMap();
+            CreateMap<Account, UserProcessModel>().ReverseMap();
+            CreateMap<Pagination<Account>, Pagination<UserModel>>().ConvertUsing<PaginationConverter<Account, UserModel>>();
         }
     }
 
