@@ -34,7 +34,7 @@ namespace RhythmHaven.API.Controllers
             } catch { throw; }
         }
 
-        [HttpPost("Recharge")]
+        [HttpPost("recharge")]
         [Authorize]
         public async Task<IActionResult> Recharge(double amount)
         {
@@ -52,7 +52,7 @@ namespace RhythmHaven.API.Controllers
             }
         }
 
-        [HttpGet("VNPayReturn")]
+        [HttpGet("vnpay-return")]
         public async Task<IActionResult> VnPayReturn([FromQuery] VnPayModel model)
         {
             try

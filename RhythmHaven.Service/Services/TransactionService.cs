@@ -36,6 +36,7 @@ namespace RhythmHaven.Service.Services
                 TransactionDes = $"RhythmHaven {username.ToUpper()}: Recharge +{amount}.",
             };
             var result = await _unitOfWork.TransactionRepository.AddAsync(transaction);
+            _unitOfWork.Save();
             return _mapper.Map<TransactionModel>(result);
         }
 
@@ -58,6 +59,7 @@ namespace RhythmHaven.Service.Services
                 var user = await _unitOfWork.AccountRepository.GetByIdAsync(transaction.AccountId);
                 user.Credit += double.Parse(model.vnp_Amount) / 100;
                 _unitOfWork.AccountRepository.UpdateAsync(user);
+                _unitOfWork.Save();
                 return _mapper.Map<TransactionModel>(transaction);
             }
             else

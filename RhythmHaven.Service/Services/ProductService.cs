@@ -26,6 +26,7 @@ namespace RhythmHaven.Service.Services
         {
             var addProduct = _mapper.Map<Product>(model);
             var result = await _unitOfWork.ProductRepository.AddAsync(addProduct);
+            _unitOfWork.Save();
             return _mapper.Map<ProductModel>(result);
         }
 

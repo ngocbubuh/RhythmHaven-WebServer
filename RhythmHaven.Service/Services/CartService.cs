@@ -26,7 +26,9 @@ namespace RhythmHaven.Service.Services
             var addCart = _mapper.Map<Cart>(model);
             var user = await _unitOfWork.AccountRepository.GetByUsernameAsync(username);
             addCart.AccountId = user.Id;
+            addCart.Id = Guid.NewGuid();
             var result = await _unitOfWork.CartRepository.AddAsync(addCart);
+            _unitOfWork.Save();
             return _mapper.Map<CartModel>(result);
         }
 

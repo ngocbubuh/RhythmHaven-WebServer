@@ -21,7 +21,7 @@ namespace RhythmHaven.Repository.Repositories
         public async Task<Pagination<Transaction>> GetAllByUserId(Guid userId, PaginationParameter paginationParameter)
         {
             var itemCount = await _context.Transactions.CountAsync();
-            var items = await _context.Transactions.Where(x => x.Id.Equals(userId))
+            var items = await _context.Transactions.Where(x => x.AccountId.Equals(userId))
                                     .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
                                     .Take(paginationParameter.PageSize)
                                     .AsNoTracking()

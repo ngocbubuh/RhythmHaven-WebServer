@@ -60,8 +60,21 @@ namespace RhythmHaven.Service.Services
             user.Credit -= orderProcessModel.Total;
             _unitOfWork.AccountRepository.UpdateAsync(user);
 
+            //Add Transaction
+            var transaction = new Transaction
+            {
+                AccountId = user.Id,
+                Amount = orderProcessModel.Total,
+                TransactionDes = $"Payment for shopping instrument",
+                TransactionStatus = true,
+                TransactionType = TransactionType.OUT.ToString()
+            };
+
+            var addTransaction = await _unitOfWork.TransactionRepository.AddAsync(transaction);
+
             //Tao order
             addOrder.AccountId = user.Id;
+            addOrder.TransactionId = addTransaction.Id;
             var result = await _unitOfWork.OrderRepository.AddAsync(addOrder);
 
             //Tao orderDetail
@@ -70,19 +83,6 @@ namespace RhythmHaven.Service.Services
                 item.OrderId = result.Id;
             }
             await _unitOfWork.OrderDetailRepository.AddRangeAsync(addOrder.OrderDetails);
-
-            //Add Transaction
-            var transaction = new Transaction
-            {
-                Id = Guid.NewGuid(),
-                AccountId = user.Id,
-                Amount = orderProcessModel.Total,
-                TransactionDes = $"Payment for order {result.Id}",
-                TransactionStatus = true,
-                TransactionType = TransactionType.OUT.ToString()
-            };
-
-            await _unitOfWork.TransactionRepository.AddAsync(transaction);
             _unitOfWork.Save();
             return _mapper.Map<OrderModel>(result);
         }

@@ -7,6 +7,7 @@ using RhythmHaven.Service.BusinessModels.CartModels;
 using RhythmHaven.Service.BusinessModels.OrderDetailModels;
 using RhythmHaven.Service.BusinessModels.OrderModels;
 using RhythmHaven.Service.BusinessModels.ProductModels;
+using RhythmHaven.Service.BusinessModels.TransactionModels;
 using RhythmHaven.Service.BusinessModels.UserModels;
 using RhythmHaven.Service.Utils;
 using System;
@@ -32,6 +33,8 @@ namespace RhythmHaven.Service.Settings
             CreateMap<Pagination<Account>, Pagination<UserModel>>().ConvertUsing<PaginationConverter<Account, UserModel>>();
 
             CreateMap<Product, ProductModel>().ReverseMap();
+            CreateMap<Product, ProductProcessModel>().ReverseMap();
+            CreateMap<ProductProcessModel, Product>().ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity));
             CreateMap<Pagination<Product>,Pagination<ProductModel>>().ConvertUsing<PaginationConverter<Product, ProductModel>>();
 
             CreateMap<Cart, CartModel>().ReverseMap();
@@ -42,6 +45,8 @@ namespace RhythmHaven.Service.Settings
 
             CreateMap<OrderDetail, OrderDetailModel>().ReverseMap();
             CreateMap<OrderDetail, OrderDetailProcessModel>().ReverseMap();
+
+            CreateMap<Transaction, TransactionModel>().ReverseMap();
         }
     }
 

@@ -13,6 +13,6 @@ namespace RhythmHaven.Service.BusinessModels.OrderModels
 
         public double Total { get; set; }
 
-        public virtual ICollection<OrderDetailModel>? OrderDetails { get; set; }
+        public virtual ICollection<OrderDetailProcessModel>? OrderDetails { get; set; }
     }
 }
