@@ -22,6 +22,7 @@ namespace RhythmHaven.Repository.Repositories
         {
             var itemCount = await _context.Orders.CountAsync();
             var items = await _context.Orders.Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                                    .Include(x => x.OrderDetails)
                                     .Take(paginationParameter.PageSize)
                                     .AsNoTracking()
                                     .ToListAsync();

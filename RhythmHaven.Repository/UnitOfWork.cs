@@ -16,6 +16,11 @@ namespace RhythmHaven.Repository
         private readonly RhythmHavenContext _context;
         private IDbContextTransaction _transaction;
         private IAccountRepository _accountRepository;
+        private ICartRepository _cartRepository;
+        private IOrderRepository _orderRepository;
+        private IOrderDetailRepository _orderDetailRepository;
+        private IProductRepository _productRepository;
+        private ITransactionRepository _transactionRepository;
 
         public UnitOfWork(RhythmHavenContext context)
         {
@@ -28,6 +33,46 @@ namespace RhythmHaven.Repository
             {
                 return _accountRepository ??= new AccountRepository(_context);
 
+            }
+        }
+
+        public ICartRepository CartRepository
+        {
+            get
+            {
+                return _cartRepository ??= new CartRepository(_context);
+            }
+        }
+
+        public IOrderDetailRepository OrderDetailRepository
+        {
+            get
+            {
+                return _orderDetailRepository ??= new OrderDetailRepository(_context);
+            }
+        }
+
+        public IOrderRepository OrderRepository
+        {
+            get
+            {
+                return _orderRepository ??= new OrderRepository(_context);
+            }
+        }
+
+        public IProductRepository ProductRepository
+        {
+            get
+            {
+                return _productRepository ??= new ProductRepository(_context);
+            }
+        }
+
+        public ITransactionRepository TransactionRepository
+        {
+            get
+            {
+                return _transactionRepository ??= new TransactionRepository(_context);
             }
         }
 

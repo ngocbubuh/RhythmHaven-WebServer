@@ -10,6 +10,11 @@ namespace RhythmHaven.Repository
     public interface IUnitOfWork
     {
         IAccountRepository AccountRepository { get; }
+        ICartRepository CartRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
+        IOrderRepository OrderRepository { get; }
+        IProductRepository ProductRepository { get; }
+        ITransactionRepository TransactionRepository { get; }
         int Save();
         void Commit();
         void Rollback();

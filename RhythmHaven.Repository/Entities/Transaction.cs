@@ -8,6 +8,8 @@ public partial class Transaction : EntityBase
 {
     public Guid AccountId { get; set; }
 
+    public double Amount { get; set; }
+
     public string TransactionType { get; set; } = null!;
 
     public string TransactionDes { get; set; } = null!;

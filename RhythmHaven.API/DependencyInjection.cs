@@ -1,6 +1,7 @@
 ﻿using AspNetCoreRateLimit;
 using RhythmHaven.API.Middlewares;
 using RhythmHaven.Repository;
+using RhythmHaven.Repository.Repositories.Interfaces;
 using RhythmHaven.Service.Services;
 using RhythmHaven.Service.Services.Interfaces;
 using System.Diagnostics;
@@ -15,6 +16,13 @@ namespace RhythmHaven.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IClaimService, ClaimService>();
             services.AddScoped<IAuthenService, AuthenService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICartService, CartService>();
+            services.AddScoped<IClaimService, ClaimService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ITransactionService, TransactionService>();
 
             // add Middleware
             services.AddExceptionHandler<ExceptionHandlerMiddleware>();

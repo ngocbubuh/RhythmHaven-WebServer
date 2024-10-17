@@ -3,6 +3,10 @@ using RhythmHaven.Repository.Common;
 using RhythmHaven.Repository.Entities;
 using RhythmHaven.Repository.Enums;
 using RhythmHaven.Service.BusinessModels.AuthenModels;
+using RhythmHaven.Service.BusinessModels.CartModels;
+using RhythmHaven.Service.BusinessModels.OrderDetailModels;
+using RhythmHaven.Service.BusinessModels.OrderModels;
+using RhythmHaven.Service.BusinessModels.ProductModels;
 using RhythmHaven.Service.BusinessModels.UserModels;
 using RhythmHaven.Service.Utils;
 using System;
@@ -26,6 +30,18 @@ namespace RhythmHaven.Service.Settings
             CreateMap<UserModel, Account>().ReverseMap();
             CreateMap<Account, UserProcessModel>().ReverseMap();
             CreateMap<Pagination<Account>, Pagination<UserModel>>().ConvertUsing<PaginationConverter<Account, UserModel>>();
+
+            CreateMap<Product, ProductModel>().ReverseMap();
+            CreateMap<Pagination<Product>,Pagination<ProductModel>>().ConvertUsing<PaginationConverter<Product, ProductModel>>();
+
+            CreateMap<Cart, CartModel>().ReverseMap();
+            CreateMap<Cart, CartProcessModel>().ReverseMap();
+
+            CreateMap<Order, OrderModel>().ReverseMap();
+            CreateMap<Order, OrderProcessModel>().ReverseMap();
+
+            CreateMap<OrderDetail, OrderDetailModel>().ReverseMap();
+            CreateMap<OrderDetail, OrderDetailProcessModel>().ReverseMap();
         }
     }
 
