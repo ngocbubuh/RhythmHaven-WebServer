@@ -23,7 +23,8 @@ namespace RhythmHaven.API.Controllers
             try
             {
                 var result = await _authenService.LoginWithUsernamePassword(model.Username, model.Password);
-                return Ok(result);
+                if(result.HttpCode == 200) return Ok(result);
+                else return BadRequest(result);
             } catch { throw; }
         }
 
