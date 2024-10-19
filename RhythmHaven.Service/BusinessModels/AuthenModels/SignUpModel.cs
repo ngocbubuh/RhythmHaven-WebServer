@@ -26,13 +26,13 @@ namespace RhythmHaven.Service.BusinessModels.AuthenModels
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Mật khẩu phải có từ 4 đến 20 kí tự.")]
         public string Password { get; set; } = "";
 
-        //[Required(ErrorMessage = "Vui lòng nhập lại mật khẩu")]
-        //[Display(Name = "Confirm Password")]
-        //[DataType(DataType.Password)]
-        //[Compare("Password", ErrorMessage = "Mậu khẩu nhập không trùng khớp")]
-        //[StringLength(20, MinimumLength = 4, ErrorMessage = "Mật khẩu phải có từ 4 đến 20 kí tự.")]
-        //[PasswordPropertyText]
-        //public string ConfirmPassword { get; set; } = ""; //Confirm Password
+        [Required(ErrorMessage = "Vui lòng nhập lại mật khẩu")]
+        [Display(Name = "Confirm Password")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Mậu khẩu nhập không trùng khớp")]
+        [StringLength(20, MinimumLength = 4, ErrorMessage = "Mật khẩu phải có từ 4 đến 20 kí tự.")]
+        [PasswordPropertyText]
+        public string ConfirmPassword { get; set; } = ""; //Confirm Password
 
 
         //[Display(Name = "Phone Number")]
