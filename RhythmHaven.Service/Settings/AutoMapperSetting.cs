@@ -24,7 +24,6 @@ namespace RhythmHaven.Service.Settings
         {
             CreateMap<SignUpModel, Account>().ReverseMap();
             CreateMap<SignUpModel, Account>()
-                .ForMember(dest => dest.UnsignName, opt => opt.MapFrom(src => StringUtils.ConvertToUnSign(src.Name)))
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => Role.USER.ToString()))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => AccountStatus.ACTIVE.ToString()));
                 

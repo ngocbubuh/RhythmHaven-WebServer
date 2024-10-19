@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RhythmHaven.Repository.Entities;
 
@@ -11,9 +12,11 @@ using RhythmHaven.Repository.Entities;
 namespace RhythmHaven.Repository.Migrations
 {
     [DbContext(typeof(RhythmHavenContext))]
-    partial class RhythmHavenContextModelSnapshot : ModelSnapshot
+    [Migration("20241019035855_ChangeSignUp")]
+    partial class ChangeSignUp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

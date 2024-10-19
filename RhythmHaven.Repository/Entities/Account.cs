@@ -6,11 +6,11 @@ namespace RhythmHaven.Repository.Entities;
 
 public partial class Account : EntityBase
 {
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; } = null!;
 
-    public string PhoneNum { get; set; } = null!;
+    public string? PhoneNum { get; set; } = null!;
 
     public double Credit { get; set; } = 0;
 
