@@ -16,6 +16,8 @@ public partial class Product : EntityBase
 
     public int Quantity { get; set; }
 
+    public string Image { get; set; } = null!;
+
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();

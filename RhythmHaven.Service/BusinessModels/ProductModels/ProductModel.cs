@@ -19,5 +19,7 @@ namespace RhythmHaven.Service.BusinessModels.ProductModels
         public double Price { get; set; }
 
         public int Quantity { get; set; }
+
+        public string Image { get; set; } = null!;
     }
 }
